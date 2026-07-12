@@ -1,6 +1,9 @@
-# TCN Landmark Classifier
+# 자폐아동의 반복행동 감지 서비스
+자페 아동의 스트레스 관련 상황을 분석하고 감정 조절을 도울 수 있도록 웹캠을 통해 자폐 아동의 반복 행동을 인식하는 알고리즘입니다.
 
-MediaPipe Pose로 추출한 신체 랜드마크 시퀀스를 TCN(Temporal Convolutional Network) 기반 모델로 분류하는 실시간 반복 행동 인식 프로젝트입니다.
+## TCN Landmark Classifier
+
+MediaPipe Pose로 추출한 신체 랜드마크 시퀀스를 TCN(Temporal Convolutional Network) 기반 모델로 분류하는 실시간 반복 행동 인식합니다.
 
 ## 주요 기능
 
