@@ -16,6 +16,24 @@ MediaPipe Pose로 추출한 신체 랜드마크 시퀀스를 TCN(Temporal Convol
 - `hand` — 손 관련 반복 행동
 - `head` — 머리 관련 반복 행동
 
+## Training Pipeline
+
+본 모델은 MediaPipe Pose를 통해 추출한 신체 랜드마크 시퀀스를 입력으로 받아 TCN(Temporal Convolutional Network) 기반 분류 모델로 자폐 아동의 반복 행동 유형을 분류하도록 학습되었습니다.
+
+### 1. Dataset 구성
+
+반복 행동 데이터를 크롤링, 직접 촬영하는 방식으로 수집했습니다.
+학습 데이터 부족 문제를 완화하고 모델의 일반화 성능을 향상시키기 위해 OpenCV 기반 영상 증강(Horizontal Flip, Brightness Adjustment, Scaling)을 적용했습니다.
+
+| Class | Description |
+|------|-------------|
+| body | 몸 전체 움직임과 관련된 반복 행동 |
+| hand | 손 움직임과 관련된 반복 행동 |
+| head | 머리 움직임과 관련된 반복 행동 |
+
+총 270개의 행동 영상 데이터를 사용했으며, 각 클래스별 90개의 영상으로 구성했습니다.
+
+
 ## 요구 사항
 
 - Python 3.10
@@ -68,11 +86,6 @@ python realtime_predict.py
 | `FEATURE_DIM` | `132` | 프레임당 특징 차원 (33개 랜드마크 × 4) |
 | `CLASS_NAMES` | `["body", "hand", "head"]` | 분류 클래스 순서 (학습 시 label encoder 순서와 반드시 일치해야 함) |
 
-## 트러블슈팅
-
-- **`mp.solutions` AttributeError**: 위 설치 가이드의 버전 조합을 그대로 사용하세요. 최신 mediapipe로 임의 업그레이드 시 재발할 수 있습니다.
-- **신뢰도가 안 뜸**: `Frames: N/300` 카운터가 300에 도달할 때까지 기다려야 합니다. 카메라 앞에서 자세가 유지되어야 landmark가 계속 추출됩니다.
-- **numpy/tensorflow dependency 충돌 경고**: 설치 시 pip가 출력하는 `ERROR: pip's dependency resolver...` 경고는 위 조합에서는 무시해도 실행에 지장이 없는 것으로 확인되었습니다.
 
 ## 프로젝트 구조
 
