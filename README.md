@@ -20,7 +20,7 @@ MediaPipe Pose로 추출한 신체 랜드마크 시퀀스를 TCN(Temporal Convol
 
 본 모델은 MediaPipe Pose를 통해 추출한 신체 랜드마크 시퀀스를 입력으로 받아 TCN(Temporal Convolutional Network) 기반 분류 모델로 자폐 아동의 반복 행동 유형을 분류하도록 학습되었습니다.
 
-### 1. Dataset 구성
+### Dataset 구성
 
 반복 행동 데이터를 크롤링, 직접 촬영하는 방식으로 수집했습니다.
 학습 데이터 부족 문제를 완화하고 모델의 일반화 성능을 향상시키기 위해 OpenCV 기반 영상 증강(Horizontal Flip, Brightness Adjustment, Scaling)을 적용했습니다.
